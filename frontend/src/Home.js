@@ -36,19 +36,25 @@ function Home() {
                         <th>Actions</th>
                     </tr>
                 </thead>
-                <tbody>
-                   {data.map((d , i) => (
-                    <tr>
-                        <td>{d.name}</td>
-                        <td>{d.phone}</td>
-                        <td>{d.email}</td>
-                        <td>
-                            <Link to={`/update/${d.id}`} className='btn btn-sm btn-primary'>Update</Link>
-                            <button onClick={e => handleDelete(d.id)} className='btn btn-sm btn-danger'>Delete</button>
-                        </td>
-                    </tr>
-                   ))}
-                </tbody>
+                 <tbody>
+                    {Array.isArray(data) && data.length > 0 ? (
+                        data.map((d , i) => (
+                         <tr key={d.id || i}>
+                             <td>{d.name}</td>
+                             <td>{d.phone}</td>
+                             <td>{d.email}</td>
+                             <td>
+                                 <Link to={`/update/${d.id}`} className='btn btn-sm btn-primary me-2'>Update</Link>
+                                 <button onClick={e => handleDelete(d.id)} className='btn btn-sm btn-danger'>Delete</button>
+                             </td>
+                         </tr>
+                        ))
+                    ) : (
+                        <tr>
+                            <td colSpan="4" className='text-center'>No students found</td>
+                        </tr>
+                    )}
+                 </tbody>
             </table>
         </div>
     </div>
