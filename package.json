@@ -1,0 +1,21 @@
+{
+  "name": "students-record",
+  "version": "1.0.0",
+  "description": "Full-stack Students Record Management System",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "backend": "cd backend && npm start",
+    "frontend": "cd frontend && npm start",
+    "build": "cd frontend && npm run build",
+    "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "start": "cd backend && npm start",
+    "test": "cd frontend && npm test"
+  },
+  "keywords": ["students", "record", "management", "react", "nodejs", "mysql"],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
