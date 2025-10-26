@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React , { useState }from 'react'
 import { useNavigate } from 'react-router-dom';
+import API_BASE_URL from './config';
 
 function Create() {
 
@@ -11,7 +12,7 @@ function Create() {
         const navigate = useNavigate();
         const handleSubmit = (event) => {
             event.preventDefault();
-            axios.post('http://localhost:8081/create', {name, phone, email})
+            axios.post(`${API_BASE_URL}/create`, {name, phone, email})
             .then(res => {
                 navigate('/');
             }).catch(err => console.log(err));

@@ -2,6 +2,7 @@ import axios from 'axios';
 import React , { useState }from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import API_BASE_URL from './config';
 
 function Update() {
 
@@ -14,7 +15,7 @@ function Update() {
 
         const handleSubmit = (event) => {
             event.preventDefault();
-            axios.put(`http://localhost:8081/update/${id}`, {name, phone, email})
+            axios.put(`${API_BASE_URL}/update/${id}`, {name, phone, email})
             .then(res => {
                 navigate('/');
             }).catch(err => console.log(err));

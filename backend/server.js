@@ -1,7 +1,7 @@
 const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
-
+require('dotenv').config();
 
 const app = express();
 
@@ -10,10 +10,10 @@ app.use(express.json());
 
 // MySQL database connection
 const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'student_db'
+    host: process.env.DB_HOST || 'localhost',
+    user: process.env.DB_USER || 'root',
+    password: process.env.DB_PASSWORD || '',
+    database: process.env.DB_NAME || 'student_db'
 });
 
 //get all users
@@ -67,7 +67,8 @@ app.delete('/delete/:id', (req, res) => {
 });
 
 // Start the server
+const PORT = process.env.PORT || 8081;
 
-app.listen(8081, () => {
-    console.log("Server is running on port 8081");
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });

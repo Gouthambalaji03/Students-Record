@@ -1,6 +1,7 @@
 import React, {  useEffect, useState} from 'react'
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import API_BASE_URL from './config';
 
 
 function Home() {
@@ -8,7 +9,7 @@ function Home() {
     const [data , setData] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:8081/')
+        axios.get(`${API_BASE_URL}/`)
         .then(res => setData(res.data))
         .catch(err => console.log(err));
     }, []);
@@ -16,7 +17,7 @@ function Home() {
     const navigate = useNavigate();
     
     const handleDelete = (id) => {
-        axios.delete(`http://localhost:8081/delete/${id}`)
+        axios.delete(`${API_BASE_URL}/delete/${id}`)
         .then(res => navigate('/'))
         .catch(err => console.log(err));
     }
